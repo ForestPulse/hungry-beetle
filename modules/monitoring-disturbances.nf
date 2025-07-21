@@ -39,7 +39,7 @@ workflow disturbances_monitoring_period {
 // detect the disturbances
 process disturbance_detection {
 
-  label 'beetle'
+  label 'beetle_core'
 
   input:
   tuple val(tile_ID), val(tile_X), val(tile_Y), path("stats/*"), path("residuals/*"), val(product)
@@ -90,7 +90,7 @@ process filter_small_disturbances {
 // year of the disturbance
 process disturbance_year {
 
-  label 'rstats'
+  label 'beetle_core'
 
   input:
   tuple path(disturbances), val(tile_ID), val(tile_X), val(tile_Y), val(product)
@@ -113,7 +113,7 @@ process disturbance_year {
 // compute histograms of the disturbance date
 process disturbance_hist {
 
-  label 'rstats'
+  label 'beetle_core'
 
   input:
   tuple path(disturbance_dates), val(tile_ID), val(tile_X), val(tile_Y), val(product)
@@ -133,7 +133,7 @@ process disturbance_hist {
 // merge the individual histograms
 process disturbance_hist_merge {
 
-  label 'rstats'
+  label 'beetle_core'
 
   input:
   path "hist/*"
@@ -155,7 +155,7 @@ process disturbance_hist_merge {
 // create a user-friendly report
 process disturbance_report {
 
-  label 'rstats'
+  label 'beetle_core'
 
   input:
   path csv_table
