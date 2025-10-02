@@ -59,7 +59,8 @@ process disturbance_detection {
     -c "${params.counterbreak}" \
     -d "${params.thr_std}" \
     -m "${params.thr_min}" \
-    -e "${params.thr_direction}"
+    -e "${params.thr_direction}" \
+    -n "${params.n_confirm}"
   """
 
 }
